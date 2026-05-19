@@ -41,8 +41,8 @@ export const stats = [
 
 export const photos = {
   hero: {
-    src: '/images/profile-placeholder.svg',
-    alt: 'John Adrian Gozun portfolio portrait placeholder',
+    src: '/images/profile.jpg',
+    alt: 'John Adrian Gozun profile photo',
     label: 'Computer Engineering',
     title: 'Hardware, software, and hands-on systems work',
   },

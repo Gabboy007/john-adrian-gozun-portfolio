@@ -46,7 +46,7 @@ Vercel should auto-detect this as a Vite React project.
 Replace these files with your real pictures when ready:
 
 ```text
-public/images/profile-placeholder.svg
+public/images/profile.jpg
 public/images/arduino-placeholder.svg
 public/images/workbench-placeholder.svg
 public/images/systems-placeholder.svg

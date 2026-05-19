@@ -104,7 +104,7 @@ function PhotoShowcase() {
         <img
           src={photos.hero.src}
           alt={photos.hero.alt}
-          className="h-[24rem] w-full object-cover sm:h-[31rem] lg:h-[34rem]"
+          className="h-[24rem] w-full object-cover object-[center_42%] sm:h-[31rem] lg:h-[34rem]"
         />
         <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_42%,rgba(7,16,20,0.86))]" />
         <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
