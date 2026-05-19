@@ -88,7 +88,7 @@ export const education = [
   {
     title: "BS in Computer Engineering",
     school: "Dr. Yanga's Colleges, Inc.",
-    period: '2022 - Present',
+    period: '2022 - 2026',
     icon: GraduationCap,
   },
   {
