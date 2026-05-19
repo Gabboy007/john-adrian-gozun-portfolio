@@ -101,7 +101,7 @@ export const education = [
 
 export const experiences = [
   {
-    role: 'Junior Data Analyst Intern',
+    role: 'Junior Data Analyst',
     company: 'Dynamics Plus Max IT Solutions',
     period: '2025 - 2026',
     icon: DatabaseZap,
