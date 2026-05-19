@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" role="img" aria-label="Arduino project placeholder">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b2d31"/>
+      <stop offset="1" stop-color="#071014"/>
+    </linearGradient>
+    <pattern id="grid" width="54" height="54" patternUnits="userSpaceOnUse">
+      <path d="M54 0H0V54" fill="none" stroke="#2ed3ff" stroke-opacity=".12" stroke-width="2"/>
+    </pattern>
+  </defs>
+  <rect width="900" height="640" fill="url(#bg)"/>
+  <rect width="900" height="640" fill="url(#grid)"/>
+  <rect x="180" y="210" width="540" height="230" rx="28" fill="#123c45" stroke="#20f2a6" stroke-width="10"/>
+  <rect x="300" y="270" width="170" height="95" rx="12" fill="#0b1215" stroke="#2ed3ff" stroke-width="7"/>
+  <circle cx="585" cy="318" r="44" fill="#20f2a6"/>
+  <path d="M220 260h-70M220 330h-70M720 260h70M720 330h70" stroke="#d8f8ff" stroke-width="14" stroke-linecap="round"/>
+  <path d="M245 400c80-65 170-65 250 0s150 65 220 0" fill="none" stroke="#ffb75e" stroke-width="9"/>
+</svg>
