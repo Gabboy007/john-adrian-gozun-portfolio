@@ -4,23 +4,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        obsidian: '#071014',
-        panel: '#0d181d',
-        steel: '#182930',
-        circuit: '#20f2a6',
-        electric: '#2ed3ff',
-        warning: '#ffb75e',
+        canvas: 'var(--color-canvas)',
+        panel: 'var(--color-panel)',
+        ink: 'var(--color-ink)',
+        oxide: 'var(--color-oxide)',
+        teal: 'var(--color-teal)',
+        amber: 'var(--color-amber)',
+        leaf: 'var(--color-leaf)',
       },
       boxShadow: {
-        glow: '0 0 40px rgba(32, 242, 166, 0.18)',
-        electric: '0 0 32px rgba(46, 211, 255, 0.22)',
+        workbench: '0 28px 80px var(--color-shadow)',
+        lift: '0 14px 34px rgba(25, 22, 17, 0.14)',
       },
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        sans: ['var(--font-body)'],
+        display: ['var(--font-display)'],
+        mono: ['var(--font-mono)'],
       },
       backgroundImage: {
         grid:
-          'linear-gradient(rgba(46, 211, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(46, 211, 255, 0.08) 1px, transparent 1px)',
+          'linear-gradient(rgba(4, 125, 120, 0.08) var(--rule-thin), transparent var(--rule-thin)), linear-gradient(90deg, rgba(211, 77, 52, 0.07) var(--rule-thin), transparent var(--rule-thin))',
       },
     },
   },

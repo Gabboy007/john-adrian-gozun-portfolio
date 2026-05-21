@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;700;800&family=IBM+Plex+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap");
+
+:root {
+  --color-canvas: #f2efe6;
+  --color-canvas-2: #e7ece5;
+  --color-canvas-3: #fffaf0;
+  --color-panel: #fffdf6;
+  --color-panel-2: #ecf3ee;
+  --color-ink: #1d1b17;
+  --color-ink-2: #3d3931;
+  --color-muted: #70695c;
+  --color-line: rgba(29, 27, 23, 0.16);
+  --color-line-strong: #24211b;
+  --color-dark: #171a17;
+  --color-dark-2: #22261f;
+  --color-dark-3: #2d3027;
+  --color-dark-text: #fbf5e9;
+  --color-dark-muted: #cec5b4;
+  --color-dark-line: rgba(251, 245, 233, 0.16);
+  --color-oxide: #d34d34;
+  --color-teal: #047d78;
+  --color-blueprint: #245c8f;
+  --color-amber: #efb33d;
+  --color-leaf: #83ad54;
+  --color-focus: #047d78;
+  --color-shadow: rgba(25, 22, 17, 0.18);
+
+  --font-display: "Bricolage Grotesque", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --space-3xs: 0.25rem;
+  --space-2xs: 0.5rem;
+  --space-xs: 0.75rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4.5rem;
+  --space-3xl: 6rem;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.35rem;
+  --text-xl: 1.75rem;
+  --text-2xl: 2.35rem;
+  --text-3xl: 3rem;
+  --text-4xl: 4.65rem;
+
+  --leading-tight: 1.12;
+  --leading-display: 0.98;
+  --leading-body: 1.62;
+  --leading-loose: 1.75;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-short: 180ms;
+  --dur-medium: 320ms;
+  --dur-reduced: 120ms;
+
+  --radius-card: 8px;
+  --radius-control: 999px;
+  --rule-thin: 1px;
+  --rule-focus: 2px;
+  --target-size: 44px;
+  --header-height: 4.5rem;
+  --content-max: 78rem;
+  --page-gutter: 1rem;
+  --grid-size: 3.25rem;
+  --icon-sm: 1rem;
+  --icon-md: 1.25rem;
+  --icon-lg: 1.55rem;
+  --hover-lift: -2px;
+  --press-shift: 1px;
+}

@@ -1,6 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
-  <rect width="64" height="64" rx="12" fill="#071014"/>
-  <path d="M18 24h28v20H18z" fill="#123c45" stroke="#20f2a6" stroke-width="3"/>
-  <path d="M24 18v6M32 18v6M40 18v6M24 44v6M32 44v6M40 44v6M12 30h6M12 38h6M46 30h6M46 38h6" stroke="#2ed3ff" stroke-width="3" stroke-linecap="round"/>
-  <circle cx="32" cy="34" r="5" fill="#20f2a6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 84" role="img" aria-label="JAG Signalworks logo">
+  <rect width="84" height="84" rx="14" fill="#f2efe6"/>
+  <path d="M14 10h42l14 14v50H14z" fill="#171a17" stroke="#24211b" stroke-width="3"/>
+  <path d="M23 59h14c8 0 13-5 13-13V25" fill="none" stroke="#efb33d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M62 36H43c-8 0-14 6-14 14v9" fill="none" stroke="#047d78" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M58 12v17h17" fill="none" stroke="#efb33d" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="23" cy="59" r="4" fill="#d34d34"/>
+  <circle cx="50" cy="25" r="4" fill="#d34d34"/>
+  <circle cx="62" cy="36" r="4" fill="#83ad54"/>
+  <circle cx="29" cy="59" r="3" fill="#83ad54"/>
 </svg>

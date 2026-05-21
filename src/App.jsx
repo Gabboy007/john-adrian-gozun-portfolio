@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import {
+  ArrowDownRight,
   ArrowRight,
+  ArrowUpRight,
   ChevronUp,
-  CircuitBoard,
   Mail,
   Menu,
   X,
@@ -11,20 +12,38 @@ import {
   contactLinks,
   education,
   experiences,
-  expertise,
-  highlights,
+  identityFacts,
   navItems,
+  operatingModes,
   photos,
+  proofPoints,
   skills,
-  stats,
+  visualStories,
 } from './data/portfolio.js';
+
+const contactEmail = contactLinks[0]?.label ?? '';
+
+function LogoMark({ className = '' }) {
+  return (
+    <svg className={className} viewBox="0 0 84 84" role="img" aria-label="JAG Signalworks logo">
+      <path className="logo-mark__plate" d="M14 10h42l14 14v50H14z" />
+      <path className="logo-mark__trace" d="M23 59h14c8 0 13-5 13-13V25" />
+      <path className="logo-mark__trace logo-mark__trace--alt" d="M62 36H43c-8 0-14 6-14 14v9" />
+      <path className="logo-mark__spark" d="M58 12v17h17" />
+      <circle className="logo-mark__node" cx="23" cy="59" r="4" />
+      <circle className="logo-mark__node" cx="50" cy="25" r="4" />
+      <circle className="logo-mark__node logo-mark__node--alt" cx="62" cy="36" r="4" />
+      <circle className="logo-mark__node logo-mark__node--alt" cx="29" cy="59" r="3" />
+    </svg>
+  );
+}
 
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 12);
+    const onScroll = () => setIsScrolled(window.scrollY > 16);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -33,97 +52,89 @@ function Header() {
   const closeMenu = () => setIsOpen(false);
 
   return (
-    <header
-      className={`fixed left-0 right-0 top-0 z-50 transition ${
-        isScrolled ? 'border-b border-white/10 bg-obsidian/90 shadow-lg backdrop-blur-xl' : 'bg-obsidian/60 backdrop-blur-md'
-      }`}
-    >
-      <nav className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <a href="#home" className="flex min-h-11 items-center gap-3 rounded-full pr-3 text-white" onClick={closeMenu}>
-          <span className="grid h-10 w-10 place-items-center rounded-full border border-circuit/40 bg-circuit/10 text-circuit">
-            <CircuitBoard className="h-5 w-5" aria-hidden="true" />
+    <header className={`site-header ${isScrolled ? 'is-scrolled' : ''}`}>
+      <nav className="site-header__inner" aria-label="Primary navigation">
+        <a href="#home" className="brand-lockup" onClick={closeMenu}>
+          <LogoMark className="brand-lockup__mark" />
+          <span className="brand-lockup__text">
+            <strong>JAG Signalworks</strong>
+            <span>Logic + wire portfolio</span>
           </span>
-          <span className="text-sm font-semibold tracking-wide sm:text-base">John Adrian Gozun</span>
         </a>
 
-        <div className="hidden items-center gap-1 md:flex">
+        <div className="site-header__links">
           {navItems.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="rounded-full px-4 py-2 text-sm font-medium text-slate-300 transition hover:bg-white/[0.08] hover:text-white"
-            >
+            <a key={item.href} href={item.href} className="site-header__link">
               {item.label}
             </a>
           ))}
         </div>
 
-        <a
-          href={`mailto:${contactLinks[0].label}`}
-          className="hidden min-h-11 items-center gap-2 rounded-full border border-electric/40 bg-electric/10 px-4 text-sm font-semibold text-electric transition hover:bg-electric hover:text-obsidian md:inline-flex"
-        >
-          <Mail className="h-4 w-4" aria-hidden="true" />
-          Contact
+        <a href={`mailto:${contactEmail}`} className="site-header__action">
+          <Mail aria-hidden="true" />
+          Talk
         </a>
 
         <button
           type="button"
-          className="grid min-h-11 min-w-11 place-items-center rounded-full border border-white/10 bg-white/5 text-white md:hidden"
+          className="menu-button"
           onClick={() => setIsOpen((value) => !value)}
           aria-label="Toggle navigation menu"
           aria-expanded={isOpen}
         >
-          {isOpen ? <X className="h-5 w-5" aria-hidden="true" /> : <Menu className="h-5 w-5" aria-hidden="true" />}
+          {isOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
         </button>
       </nav>
 
       {isOpen && (
-        <div className="border-t border-white/10 bg-obsidian/[0.96] px-4 pb-4 pt-2 backdrop-blur-xl md:hidden">
-          <div className="mx-auto grid max-w-7xl gap-2">
-            {navItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="min-h-12 rounded-lg px-4 py-3 text-base font-medium text-slate-200 transition hover:bg-white/[0.08] hover:text-white"
-                onClick={closeMenu}
-              >
-                {item.label}
-              </a>
-            ))}
-          </div>
+        <div className="mobile-menu">
+          {navItems.map((item) => (
+            <a key={item.href} href={item.href} className="mobile-menu__link" onClick={closeMenu}>
+              {item.label}
+            </a>
+          ))}
+          <a href={`mailto:${contactEmail}`} className="mobile-menu__link mobile-menu__link--accent" onClick={closeMenu}>
+            Email John
+          </a>
         </div>
       )}
     </header>
   );
 }
 
-function PhotoShowcase() {
+function SectionHeading({ eyebrow, title, text }) {
   return (
-    <div className="grid min-w-0 gap-3" data-visual-root>
-      <div className="relative overflow-hidden rounded-lg border border-white/10 bg-panel shadow-electric">
-        <img
-          src={photos.hero.src}
-          alt={photos.hero.alt}
-          className="h-[24rem] w-full object-cover object-[center_42%] sm:h-[31rem] lg:h-[34rem]"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_42%,rgba(7,16,20,0.86))]" />
-        <div className="absolute bottom-0 left-0 right-0 p-5 sm:p-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-circuit">{photos.hero.label}</p>
-          <h2 className="mt-2 max-w-xl text-2xl font-bold leading-tight text-white sm:text-3xl">
-            {photos.hero.title}
-          </h2>
-        </div>
-      </div>
+    <div className="section-heading">
+      <p className="eyebrow">{eyebrow}</p>
+      <h2>{title}</h2>
+      {text && <p>{text}</p>}
+    </div>
+  );
+}
 
-      <div className="grid grid-cols-3 gap-3">
-        {photos.tiles.map((photo) => (
-          <figure key={photo.label} className="overflow-hidden rounded-lg border border-white/10 bg-white/[0.045]">
-            <img src={photo.src} alt={photo.alt} className="aspect-[4/3] w-full object-cover" />
-            <figcaption className="px-3 py-3 text-xs font-semibold text-slate-200 sm:text-sm">
-              {photo.label}
-            </figcaption>
-          </figure>
-        ))}
+function SignalBoard() {
+  return (
+    <div className="signal-board" aria-label="John Adrian Gozun operating snapshot">
+      <div className="signal-board__topline">
+        <span>bench / dashboard / field</span>
+        <strong>JAG-1630</strong>
+      </div>
+      <svg className="signal-board__map" viewBox="0 0 640 300" aria-hidden="true">
+        <path d="M66 76H212c49 0 75 27 75 75v32c0 49 26 73 78 73h207" />
+        <path d="M66 221h101c39 0 60-20 60-58V86c0-38 22-57 65-57h147c42 0 64 20 64 60v95" />
+        <g>
+          <circle cx="66" cy="76" r="18" />
+          <circle cx="227" cy="221" r="18" />
+          <circle cx="287" cy="151" r="18" />
+          <circle cx="503" cy="184" r="18" />
+          <circle cx="572" cy="256" r="18" />
+        </g>
+      </svg>
+      <div className="signal-board__labels">
+        <span>Arduino</span>
+        <span>D365</span>
+        <span>Repair</span>
+        <span>Mentoring</span>
       </div>
     </div>
   );
@@ -131,183 +142,171 @@ function PhotoShowcase() {
 
 function Hero() {
   return (
-    <section id="home" className="relative overflow-hidden pt-24 sm:pt-28 lg:min-h-screen lg:pt-28">
-      <div className="absolute inset-0 bg-grid bg-[size:38px_38px] opacity-40" />
-      <div className="absolute inset-x-0 top-0 h-52 bg-[linear-gradient(180deg,rgba(46,211,255,0.18),transparent)]" />
-      <div className="relative mx-auto grid w-full max-w-[82rem] items-center gap-10 px-4 pb-14 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-12 lg:px-8 lg:pb-20">
-        <div className="min-w-0 max-w-2xl">
-          <div className="inline-flex items-center gap-2 rounded-full border border-circuit/30 bg-circuit/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-circuit sm:text-sm">
-            <span className="h-2 w-2 rounded-full bg-circuit shadow-[0_0_18px_rgba(32,242,166,0.9)]" />
-            Hardware + Software Builder
-          </div>
-          <h1 className="mt-6 text-5xl font-bold leading-none text-white sm:text-6xl lg:text-[4.4rem] xl:text-[4.85rem]">
-            John Adrian Gozun
-          </h1>
-          <p className="mt-5 text-balance text-2xl font-semibold leading-snug text-slate-100 sm:text-3xl lg:text-[2rem]">
-            Building practical systems across code, circuits, data, and operations.
-          </p>
-          <p className="mt-5 max-w-xl text-base leading-8 text-slate-300 sm:text-lg">
-            Computer Engineering student with hands-on experience in Microsoft Dynamics 365, Arduino development,
-            hardware troubleshooting, mentoring, and field-ready technical work.
-          </p>
+    <section id="home" className="hero" aria-labelledby="home-title">
+      <figure className="hero-portrait">
+        <img
+          src={photos.hero.src}
+          alt={photos.hero.alt}
+          width="953"
+          height="960"
+          decoding="async"
+          fetchPriority="high"
+        />
+        <figcaption>
+          <span>{photos.hero.label}</span>
+          {photos.hero.title}
+        </figcaption>
+      </figure>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="#experience"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-circuit px-6 text-sm font-bold text-obsidian shadow-glow transition hover:-translate-y-0.5 hover:bg-white"
-            >
-              View Experience
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-electric/40 bg-electric/10 px-6 text-sm font-bold text-electric transition hover:-translate-y-0.5 hover:bg-electric hover:text-obsidian"
-            >
-              Start a Conversation
-              <Mail className="h-4 w-4" aria-hidden="true" />
-            </a>
-          </div>
+      <div className="hero-copy">
+        <p className="eyebrow">Computer Engineering / Systems Builder</p>
+        <h1 id="home-title">John Adrian Gozun turns messy tech problems into working systems.</h1>
+        <p>
+          A hands-on builder from Bocaue working across Microsoft Dynamics 365, Power Platform,
+          Arduino systems, computer repair, robotics, student mentoring, and practical operations.
+        </p>
+        <div className="hero-actions" aria-label="Primary actions">
+          <a href="#experience" className="button button--primary">
+            View work log
+            <ArrowRight aria-hidden="true" />
+          </a>
+          <a href="#contact" className="button">
+            Start a conversation
+            <Mail aria-hidden="true" />
+          </a>
+        </div>
+      </div>
 
-          <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3">
-            {stats.map((stat) => (
-              <div key={stat.label} className="rounded-lg border border-white/10 bg-white/[0.045] p-4">
-                <p className="text-2xl font-bold text-white">{stat.value}</p>
-                <p className="mt-1 text-sm text-slate-400">{stat.label}</p>
+      <SignalBoard />
+
+      <div className="identity-strip" aria-label="Identity facts">
+        {identityFacts.map((fact) => {
+          const Icon = fact.icon;
+          return (
+            <article key={fact.label} className="identity-fact">
+              <Icon aria-hidden="true" />
+              <div>
+                <span>{fact.label}</span>
+                <strong>{fact.value}</strong>
               </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="min-w-0 lg:pl-2">
-          <PhotoShowcase />
-        </div>
+            </article>
+          );
+        })}
       </div>
     </section>
   );
 }
 
-function SectionLabel({ eyebrow, title, text }) {
+function Modes() {
   return (
-    <div className="mx-auto max-w-3xl text-center">
-      <p className="text-sm font-semibold uppercase tracking-[0.22em] text-electric">{eyebrow}</p>
-      <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">{title}</h2>
-      {text && <p className="mt-4 text-base leading-8 text-slate-300">{text}</p>}
-    </div>
-  );
-}
-
-function About() {
-  return (
-    <section id="about" className="relative border-y border-white/10 bg-steel/[0.35] py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionLabel
-          eyebrow="Core expertise"
-          title="Equally at home with dashboards and hardware benches."
-          text="John's edge is the mix: software logic, electrical training, practical repair, student mentoring, and operations work all feeding the same builder mindset."
+    <section id="modes" className="section section--split" aria-labelledby="modes-title">
+      <div className="section__inner">
+        <SectionHeading
+          eyebrow="Operating modes"
+          title="Four ways John usually becomes useful fast."
+          text="The personality from the resume is not one narrow lane. It is the useful overlap between patient troubleshooting, pressure, teaching, and getting real equipment to cooperate."
         />
 
-        <div className="mt-10 grid gap-5 lg:grid-cols-2">
-          {expertise.map((item) => {
-            const Icon = item.icon;
+        <div className="mode-grid">
+          {operatingModes.map((mode, index) => {
+            const Icon = mode.icon;
             return (
-              <article key={item.title} className="rounded-lg border border-white/10 bg-obsidian/70 p-5 shadow-glow sm:p-6">
-                <div className="flex items-start gap-4">
-                  <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 ${item.accent}`}>
-                    <Icon className="h-6 w-6" aria-hidden="true" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-slate-300 sm:text-base">{item.description}</p>
-                  </div>
-                </div>
-                <div className="mt-6 grid gap-3 sm:grid-cols-3">
-                  {item.points.map((point) => (
-                    <div key={point} className="rounded-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-slate-200">
-                      {point}
-                    </div>
+              <article key={mode.title} className="mode-card">
+                <div className="mode-card__index">0{index + 1}</div>
+                <Icon aria-hidden="true" />
+                <h3>{mode.title}</h3>
+                <p>{mode.description}</p>
+                <ul aria-label={`${mode.title} strengths`}>
+                  {mode.points.map((point) => (
+                    <li key={point}>{point}</li>
                   ))}
-                </div>
-              </article>
-            );
-          })}
-        </div>
-
-        <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {education.map((item) => {
-            const Icon = item.icon;
-            return (
-              <article key={item.title} className="flex gap-4 rounded-lg border border-white/10 bg-white/[0.045] p-5">
-                <div className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-electric/10 text-electric">
-                  <Icon className="h-6 w-6" aria-hidden="true" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-400">{item.period}</p>
-                  <h3 className="mt-1 text-lg font-bold text-white">{item.title}</h3>
-                  <p className="mt-1 text-sm text-slate-300">{item.school}</p>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-
-        <div className="mt-6 grid gap-4 lg:grid-cols-3">
-          {highlights.map((item) => {
-            const Icon = item.icon;
-            return (
-              <article key={item.title} className="rounded-lg border border-white/10 bg-white/[0.035] p-5">
-                <Icon className="h-6 w-6 text-warning" aria-hidden="true" />
-                <h3 className="mt-4 text-lg font-bold text-white">{item.title}</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-300">{item.text}</p>
+                </ul>
               </article>
             );
           })}
         </div>
       </div>
     </section>
+  );
+}
+
+function ProofStrip() {
+  return (
+    <div className="proof-strip" aria-label="Portfolio proof points">
+      {proofPoints.map((point) => (
+        <div key={point.label} className="proof-strip__item">
+          <strong>{point.value}</strong>
+          <span>{point.label}</span>
+        </div>
+      ))}
+    </div>
   );
 }
 
 function Experience() {
   return (
-    <section id="experience" className="py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionLabel
-          eyebrow="Experience timeline"
-          title="A practical path through data, electronics, support, robotics, and operations."
-          text="Each role adds a different layer: analytical systems, embedded projects, diagnostics, automation, and real-world coordination."
+    <section id="experience" className="section" aria-labelledby="experience-title">
+      <div className="section__inner">
+        <div className="section-grid">
+          <SectionHeading
+            eyebrow="Work log"
+            title="A path through dashboards, robots, labs, and real operations."
+            text="The experience is intentionally varied: each stop adds another kind of judgment, from business systems to wiring benches to logistics timing."
+          />
+          <ProofStrip />
+        </div>
+
+        <div className="timeline">
+          {experiences.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article key={`${item.role}-${item.period}`} className="timeline-entry">
+                <time>{item.period}</time>
+                <div className="timeline-entry__body">
+                  <div className="timeline-entry__heading">
+                    <Icon aria-hidden="true" />
+                    <div>
+                      <h3>{item.role}</h3>
+                      <p>{item.company}</p>
+                    </div>
+                  </div>
+                  <p>{item.details}</p>
+                  <ul className="tag-list" aria-label={`${item.role} tags`}>
+                    {item.tags.map((tag) => (
+                      <li key={tag}>{tag}</li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VisualStories() {
+  return (
+    <section className="section section--gallery" aria-labelledby="gallery-title">
+      <div className="section__inner">
+        <SectionHeading
+          eyebrow="Build language"
+          title="A site that feels closer to a workbench than a template."
+          text="These visual lanes mirror the work: embedded builds, physical troubleshooting, and systems/process improvement."
         />
 
-        <div className="relative mx-auto mt-12 max-w-5xl">
-          <div className="absolute bottom-0 left-5 top-0 w-px bg-gradient-to-b from-electric via-circuit to-transparent sm:left-7" />
-          <div className="grid gap-5">
-            {experiences.map((item) => {
-              const Icon = item.icon;
-              return (
-                <article key={`${item.role}-${item.period}`} className="relative pl-16 sm:pl-20">
-                  <div className="absolute left-0 top-1 grid h-11 w-11 place-items-center rounded-full border border-circuit/40 bg-obsidian text-circuit shadow-glow sm:h-14 sm:w-14">
-                    <Icon className="h-5 w-5 sm:h-6 sm:w-6" aria-hidden="true" />
-                  </div>
-                  <div className="rounded-lg border border-white/10 bg-panel/[0.78] p-5 transition hover:border-electric/40 hover:bg-panel sm:p-6">
-                    <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                      <div>
-                        <p className="text-sm font-semibold uppercase tracking-[0.2em] text-electric">{item.period}</p>
-                        <h3 className="mt-2 text-xl font-bold text-white">{item.role}</h3>
-                        <p className="mt-1 text-sm font-medium text-slate-400">{item.company}</p>
-                      </div>
-                    </div>
-                    <p className="mt-4 text-sm leading-7 text-slate-300 sm:text-base">{item.details}</p>
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {item.tags.map((tag) => (
-                        <span key={tag} className="rounded-full border border-white/10 bg-white/[0.045] px-3 py-2 text-xs font-semibold text-slate-200">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </article>
-              );
-            })}
-          </div>
+        <div className="story-grid">
+          {visualStories.map((story) => (
+            <article key={story.title} className="story-card">
+              <img src={story.src} alt={story.alt} width="900" height="640" loading="lazy" />
+              <div className="story-card__body">
+                <span>{story.kicker}</span>
+                <h3>{story.title}</h3>
+                <p>{story.text}</p>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>
@@ -316,32 +315,49 @@ function Experience() {
 
 function Skills() {
   return (
-    <section id="skills" className="border-y border-white/10 bg-steel/[0.35] py-16 sm:py-20 lg:py-24">
-      <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <SectionLabel
-          eyebrow="Skill matrix"
-          title="Organized for projects that need both logic and hands."
-          text="A focused stack for prototypes, system maintenance, student research support, and operational improvement."
+    <section id="skills" className="section section--switchboard" aria-labelledby="skills-title">
+      <div className="section__inner">
+        <SectionHeading
+          eyebrow="Capability switchboard"
+          title="Tools arranged by the kind of problem they solve."
+          text="The skill set is split between systems, electronics, repair, and people work because John's best value is often at the crossing point."
         />
 
-        <div className="mt-10 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="skill-grid">
           {skills.map((group) => {
             const Icon = group.icon;
             return (
-              <article key={group.title} className="rounded-lg border border-white/10 bg-obsidian/[0.72] p-5">
-                <div className="flex items-center gap-3">
-                  <div className="grid h-11 w-11 shrink-0 place-items-center rounded-lg bg-circuit/10 text-circuit">
-                    <Icon className="h-5 w-5" aria-hidden="true" />
+              <article key={group.title} className="skill-card">
+                <div className="skill-card__head">
+                  <Icon aria-hidden="true" />
+                  <div>
+                    <span>{group.kicker}</span>
+                    <h3>{group.title}</h3>
                   </div>
-                  <h3 className="text-lg font-bold text-white">{group.title}</h3>
                 </div>
-                <div className="mt-5 grid gap-3">
+                <ul>
                   {group.items.map((skill) => (
-                    <div key={skill} className="flex items-center gap-3 rounded-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm text-slate-200">
-                      <span className="h-2 w-2 shrink-0 rounded-full bg-electric" />
-                      <span>{skill}</span>
-                    </div>
+                    <li key={skill}>
+                      <ArrowDownRight aria-hidden="true" />
+                      {skill}
+                    </li>
                   ))}
+                </ul>
+              </article>
+            );
+          })}
+        </div>
+
+        <div className="education-band" aria-label="Education and training">
+          {education.map((item) => {
+            const Icon = item.icon;
+            return (
+              <article key={item.title} className="education-item">
+                <Icon aria-hidden="true" />
+                <div>
+                  <span>{item.period}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.school}</p>
                 </div>
               </article>
             );
@@ -354,60 +370,47 @@ function Skills() {
 
 function Contact() {
   return (
-    <footer id="contact" className="relative overflow-hidden py-16 sm:py-20">
-      <div className="absolute inset-0 bg-grid bg-[size:42px_42px] opacity-20" />
-      <div className="relative mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid gap-8 rounded-lg border border-white/10 bg-panel/[0.86] p-5 shadow-glow backdrop-blur md:grid-cols-[1.2fr_0.8fr] sm:p-8">
-          <div>
-            <p className="text-sm font-semibold uppercase tracking-[0.22em] text-circuit">Contact</p>
-            <h2 className="mt-3 text-3xl font-bold text-white sm:text-4xl">Ready to build, troubleshoot, or prototype.</h2>
-            <p className="mt-4 max-w-2xl text-base leading-8 text-slate-300">
-              Open to opportunities where software, electronics, and real-world execution meet. Based in Bocaue, Bulacan,
-              working in English and Filipino.
-            </p>
-            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={`mailto:${contactLinks[0].label}`}
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-electric px-6 text-sm font-bold text-obsidian transition hover:bg-white"
-              >
-                Email John
-                <Mail className="h-4 w-4" aria-hidden="true" />
-              </a>
-              <a
-                href="#home"
-                className="inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.045] px-6 text-sm font-bold text-white transition hover:border-circuit hover:text-circuit"
-              >
-                Back to Top
-                <ChevronUp className="h-4 w-4" aria-hidden="true" />
-              </a>
-            </div>
-          </div>
-
-          <div className="grid content-start gap-3">
-            {contactLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="flex min-h-14 items-center gap-3 rounded-md border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-slate-200 transition hover:border-electric/40 hover:text-white"
-                >
-                  <Icon className="h-5 w-5 shrink-0 text-electric" aria-hidden="true" />
-                  <span className="break-words">{link.label}</span>
-                </a>
-              );
-            })}
-            <div className="rounded-md border border-warning/20 bg-warning/10 p-4 text-sm leading-6 text-slate-200">
-              Languages: English and Filipino
-            </div>
+    <footer id="contact" className="site-footer" aria-labelledby="contact-title">
+      <div className="site-footer__inner">
+        <div className="footer-brand">
+          <LogoMark className="footer-brand__mark" />
+          <p className="eyebrow">Contact</p>
+          <h2 id="contact-title">Ready for systems work that needs both logic and hands.</h2>
+          <p>
+            Open to roles and projects involving support, data systems, Power Platform, electronics,
+            troubleshooting, and practical team execution.
+          </p>
+          <div className="footer-actions">
+            <a href={`mailto:${contactEmail}`} className="button button--primary">
+              Email John
+              <Mail aria-hidden="true" />
+            </a>
+            <a href="#home" className="button button--ghost">
+              Back to top
+              <ChevronUp aria-hidden="true" />
+            </a>
           </div>
         </div>
 
-        <div className="mt-8 flex flex-col gap-3 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>Copyright 2026 John Adrian Gozun. Hardware, software, and systems portfolio.</p>
-          <a href="#home" className="inline-flex min-h-11 items-center gap-2 text-slate-400 transition hover:text-circuit">
-            <ChevronUp className="h-4 w-4" aria-hidden="true" />
-            Back to start
+        <div className="contact-panel" aria-label="Contact links">
+          {contactLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <a key={link.label} href={link.href} className="contact-link">
+                <Icon aria-hidden="true" />
+                <span>{link.label}</span>
+                <ArrowUpRight aria-hidden="true" />
+              </a>
+            );
+          })}
+          <div className="language-note">Languages: English and Filipino</div>
+        </div>
+
+        <div className="footer-meta">
+          <span>JAG Signalworks / John Adrian Gozun / 2026</span>
+          <a href="#home">
+            Return
+            <ChevronUp aria-hidden="true" />
           </a>
         </div>
       </div>
@@ -417,12 +420,13 @@ function Contact() {
 
 export default function App() {
   return (
-    <div className="min-h-screen overflow-x-hidden bg-obsidian text-slate-100">
+    <div className="site-shell">
       <Header />
       <main>
         <Hero />
-        <About />
+        <Modes />
         <Experience />
+        <VisualStories />
         <Skills />
       </main>
       <Contact />

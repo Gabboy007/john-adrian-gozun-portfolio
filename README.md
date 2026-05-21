@@ -1,19 +1,10 @@
-# John Adrian Gozun Portfolio
+# JAG Signalworks
 
-Modern responsive portfolio for John Adrian Gozun, built with React and Tailwind CSS.
+Custom portfolio for John Adrian Gozun, built with React and Vite.
 
-## Features
-
-- Mobile-first sticky navigation with hamburger menu
-- Responsive hero with picture-ready portfolio image slots
-- Local placeholder visuals that can be replaced with real photos
-- Photo areas for portrait, Arduino builds, wiring/repair, and systems work
-- About, education, experience timeline, skills grid, and contact footer
-- Dark industrial theme with electric blue, circuit green, and warm hardware accents
+The redesign frames John as a practical systems builder across Dynamics 365, Power Platform, Arduino work, technical support, mentoring, robotics, and operations. The visual language uses a custom JAG Signalworks monogram, workbench-inspired cards, grid/trace details, and a warmer multi-accent palette.
 
 ## Run Locally
-
-Install Node.js LTS first, then run:
 
 ```bash
 npm install
@@ -32,28 +23,16 @@ Preview the production build:
 npm run preview
 ```
 
-## Vercel
+## Content
 
-Vercel should auto-detect this as a Vite React project.
+Main resume content and contact details live in `src/data/portfolio.js`.
 
-- Framework Preset: `Vite`
-- Install Command: `npm install`
-- Build Command: `npm run build`
-- Output Directory: `dist`
-
-## Photos
-
-Replace these files with your real pictures when ready:
+Key assets:
 
 ```text
+public/favicon.svg
 public/images/profile.jpg
 public/images/arduino-placeholder.svg
 public/images/workbench-placeholder.svg
 public/images/systems-placeholder.svg
 ```
-
-You can keep the same filenames or update the paths in `src/data/portfolio.js`.
-
-## Content
-
-Main resume content and photo paths live in `src/data/portfolio.js`.

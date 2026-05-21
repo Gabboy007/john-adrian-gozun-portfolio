@@ -22,71 +22,91 @@ import {
 
 export const contact = {
   email: 'Adrian07gozun@gmail.com',
-  phone: 'Available on request',
+  phone: '0939 692 0721',
   location: 'Bocaue, Bulacan',
 };
 
 export const navItems = [
-  { label: 'About', href: '#about' },
+  { label: 'Profile', href: '#home' },
+  { label: 'Modes', href: '#modes' },
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
   { label: 'Contact', href: '#contact' },
 ];
 
-export const stats = [
-  { label: 'Computer Engineering', value: 'BS CpE' },
-  { label: 'Arduino + circuits', value: '2023+' },
-  { label: 'ERP/CRM workflows', value: 'D365' },
+export const identityFacts = [
+  {
+    label: 'Base',
+    value: contact.location,
+    icon: MapPin,
+  },
+  {
+    label: 'Program',
+    value: 'BS Computer Engineering',
+    icon: GraduationCap,
+  },
+  {
+    label: 'Technical training',
+    value: 'EIM NC II',
+    icon: ShieldCheck,
+  },
+  {
+    label: 'Languages',
+    value: 'English + Filipino',
+    icon: Users,
+  },
+];
+
+export const proofPoints = [
+  { label: 'Dynamics 365 and Power Platform', value: 'D365' },
+  { label: 'Arduino systems and mentoring', value: '2023+' },
+  { label: 'Robotics and automation foundation', value: '2020+' },
+  { label: 'Software, hardware, and operations', value: '3 lanes' },
 ];
 
 export const photos = {
   hero: {
     src: '/images/profile.jpg',
     alt: 'John Adrian Gozun profile photo',
-    label: 'Computer Engineering',
-    title: 'Hardware, software, and hands-on systems work',
+    label: 'John Adrian Gozun',
+    title: 'Computer engineering student with a hands-on systems mindset',
   },
-  tiles: [
-    {
-      src: '/images/arduino-placeholder.svg',
-      alt: 'Arduino electronics project placeholder',
-      label: 'Arduino Builds',
-    },
-    {
-      src: '/images/workbench-placeholder.svg',
-      alt: 'Technical workbench placeholder',
-      label: 'Wiring & Repair',
-    },
-    {
-      src: '/images/systems-placeholder.svg',
-      alt: 'Systems and data workflow placeholder',
-      label: 'Systems Work',
-    },
-  ],
 };
 
-export const expertise = [
+export const operatingModes = [
   {
-    title: 'Bits & Bytes',
-    icon: TerminalSquare,
-    accent: 'text-electric',
+    title: 'Systems Tuner',
+    icon: DatabaseZap,
     description:
-      'Software logic, workflow automation, ERP/CRM configuration, data analysis, and systems thinking for cleaner operations.',
-    points: ['Microsoft Dynamics 365', 'Data-driven troubleshooting', 'Automation mindset'],
+      'Configures, supports, and improves business systems with a practical eye for cleaner workflows.',
+    points: ['Dynamics 365', 'Power Platform', 'ERP/CRM support'],
   },
   {
-    title: 'Wires & Hardware',
+    title: 'Circuit Builder',
     icon: PlugZap,
-    accent: 'text-circuit',
     description:
-      'Hands-on electronics, Arduino prototyping, circuit wiring, computer repair, and technical support in real environments.',
-    points: ['Arduino-based systems', 'Circuit wiring and testing', 'Hardware diagnostics'],
+      'Moves comfortably through Arduino logic, wiring, testing, and hands-on prototype iteration.',
+    points: ['Arduino programming', 'Circuit wiring', 'System optimization'],
+  },
+  {
+    title: 'Rapid Fixer',
+    icon: Wrench,
+    description:
+      'Troubleshoots computers, peripherals, installations, and upgrades when downtime needs to stay low.',
+    points: ['Diagnostics', 'Maintenance', 'Technical support'],
+  },
+  {
+    title: 'Calm Mentor',
+    icon: Users,
+    description:
+      'Guides students through research builds, documentation, presentations, and defense preparation.',
+    points: ['Student mentoring', 'Research support', 'Clear explanations'],
   },
 ];
 
 export const education = [
   {
-    title: "BS in Computer Engineering",
+    title: 'Bachelor of Science in Computer Engineering',
     school: "Dr. Yanga's Colleges, Inc.",
     period: '2022 - 2026',
     icon: GraduationCap,
@@ -94,7 +114,7 @@ export const education = [
   {
     title: 'Electrical Installation and Maintenance NC II',
     school: 'TESDA PTC Calumpit',
-    period: 'Certified training',
+    period: '2024 - 2025',
     icon: ShieldCheck,
   },
 ];
@@ -106,8 +126,8 @@ export const experiences = [
     period: '2025 - 2026',
     icon: DatabaseZap,
     details:
-      'Worked across Microsoft Dynamics 365, ERP/CRM configuration, operational data, and workflow automation.',
-    tags: ['Dynamics 365', 'ERP/CRM', 'Automation'],
+      'Gained hands-on experience with Microsoft Dynamics 365 and Power Platform, contributing to ERP/CRM configuration, system support, business process optimization, documentation, troubleshooting, and workflow automation.',
+    tags: ['Dynamics 365', 'Power Platform', 'ERP/CRM', 'Documentation'],
   },
   {
     role: 'Freelance Arduino Developer & Mentor',
@@ -115,81 +135,120 @@ export const experiences = [
     period: '2023 - 2025',
     icon: Microchip,
     details:
-      'Programmed Arduino-based systems, taught circuit wiring, and mentored students through research defenses.',
-    tags: ['Arduino', 'Mentoring', 'Circuits'],
+      'Designed and programmed Arduino-based systems while mentoring high school and senior high school students through circuit wiring, coding, documentation, presentations, and research defense preparation.',
+    tags: ['Arduino', 'Circuits', 'Mentoring', 'Research builds'],
   },
   {
     role: 'Computer Tech',
-    company: "Dr. Yanga's Colleges Inc.",
+    company: "Dr. Yanga's Colleges, Inc.",
     period: '2023 - 2024',
     icon: Wrench,
     details:
-      'Delivered technical support, hardware and software troubleshooting, system upgrades, and maintenance work.',
-    tags: ['Support', 'Upgrades', 'Diagnostics'],
+      'Provided technical support and maintenance for computer systems and peripherals, assisting students and faculty with hardware/software troubleshooting, installations, and system upgrades.',
+    tags: ['Support', 'Troubleshooting', 'Installations', 'Upgrades'],
   },
   {
     role: 'Robotics Member',
-    company: 'Self-Driving Car Focus',
+    company: "Dr. Yanga's Colleges, Inc.",
     period: '2020 - 2022',
     icon: RadioTower,
     details:
-      'Built discipline in precision, innovation, automation, and fast decisions inside a high-pressure robotics environment.',
-    tags: ['Robotics', 'Automation', 'Precision'],
+      'Worked in a high-pressure self-driving car development environment with a focus on precision, innovation, fast decisions, collaboration, and disciplined problem-solving.',
+    tags: ['Robotics', 'Automation', 'Precision', 'Teamwork'],
   },
   {
-    role: 'Logistics & Operations',
+    role: 'Delivery & Operations',
     company: 'Golden City Ricemill',
     period: '2020 - 2021',
     icon: BriefcaseBusiness,
     details:
-      'Managed transportation logistics and processing workflows with a practical eye for timing, coordination, and reliability.',
-    tags: ['Operations', 'Logistics', 'Workflow'],
+      'Supported rice mill operations by managing transportation logistics and processing workflows with attention to efficiency, reliability, quality control, and timing.',
+    tags: ['Logistics', 'Operations', 'Workflow', 'Reliability'],
+  },
+];
+
+export const visualStories = [
+  {
+    src: '/images/arduino-placeholder.svg',
+    alt: 'Arduino project illustration with board traces and signal lines',
+    kicker: 'Embedded builds',
+    title: 'Code that has to touch real wiring.',
+    text: 'Arduino work is presented as a craft lane, not a throwaway bullet: logic, circuits, tests, and fixes all in one loop.',
+  },
+  {
+    src: '/images/workbench-placeholder.svg',
+    alt: 'Technical workbench illustration with tools and electronics',
+    kicker: 'Hands-on support',
+    title: 'Comfortable where the problem is physical.',
+    text: 'Computer repair, installations, EIM training, and maintenance work give the site a grounded hardware identity.',
+  },
+  {
+    src: '/images/systems-placeholder.svg',
+    alt: 'Systems workflow illustration with connected process blocks',
+    kicker: 'Business systems',
+    title: 'Dashboards, documents, and process flow.',
+    text: 'D365 and Power Platform experience sits beside hardware work as part of the same practical systems mindset.',
   },
 ];
 
 export const skills = [
   {
-    title: 'Hardware / Electronics',
-    icon: Cpu,
-    items: ['Arduino programming', 'Circuit wiring', 'Prototyping', 'Technical troubleshooting'],
-  },
-  {
-    title: 'Software / Data',
+    title: 'Business Systems',
+    kicker: 'Configure',
     icon: Network,
-    items: ['Microsoft Dynamics 365', 'ERP/CRM configuration', 'Data analysis', 'System optimization'],
+    items: [
+      'Microsoft Dynamics 365',
+      'Power Platform',
+      'ERP/CRM configuration',
+      'Business process optimization',
+    ],
   },
   {
-    title: 'Core Skills',
-    icon: BrainCircuit,
-    items: ['Leadership', 'Problem-solving', 'Mentoring', 'English and Filipino'],
+    title: 'Embedded Electronics',
+    kicker: 'Prototype',
+    icon: Cpu,
+    items: ['Arduino programming', 'Circuit wiring', 'Hardware testing', 'System optimization'],
   },
   {
-    title: 'Hands-On Work',
+    title: 'Technical Support',
+    kicker: 'Repair',
     icon: Hammer,
-    items: ['Computer repair', 'Systems upgrades', 'Workflow support', 'Operations coordination'],
+    items: ['Computer repair', 'Peripheral support', 'System upgrades', 'Hardware/software diagnostics'],
   },
-];
-
-export const highlights = [
   {
+    title: 'Working Style',
+    kicker: 'Lead',
+    icon: BrainCircuit,
+    items: ['Problem-solving', 'Leadership', 'Time management', 'Organizational skills'],
+  },
+  {
+    title: 'Field Mindset',
+    kicker: 'Operate',
     icon: Settings2,
-    title: 'Technical Range',
-    text: 'Comfortable moving from software dashboards to wiring benches and repair tools.',
+    items: ['Logistics coordination', 'Quality control', 'Workflow support', 'Fast-paced execution'],
   },
   {
-    icon: Users,
-    title: 'Mentor Energy',
-    text: 'Explains circuits and systems clearly enough for students to defend their work.',
-  },
-  {
+    title: 'Mentoring',
+    kicker: 'Explain',
     icon: Sparkles,
-    title: 'Builder Mindset',
-    text: 'Looks for practical systems that work reliably under real constraints.',
+    items: ['Student guidance', 'Research documentation', 'Presentation prep', 'Project defense support'],
+  },
+  {
+    title: 'Software Logic',
+    kicker: 'Build',
+    icon: TerminalSquare,
+    items: ['Coding fundamentals', 'Data analysis', 'Troubleshooting flow', 'Automation mindset'],
+  },
+  {
+    title: 'Electrical Training',
+    kicker: 'Wire',
+    icon: PlugZap,
+    items: ['Electrical installation basics', 'Maintenance training', 'Safety awareness', 'Hands-on discipline'],
   },
 ];
 
 export const contactLinks = [
   { label: contact.email, href: `mailto:${contact.email}`, icon: Send },
-  { label: contact.phone, href: '#contact', icon: Phone },
-  { label: contact.location, href: '#contact', icon: MapPin },
+  { label: contact.phone, href: 'tel:+639396920721', icon: Phone },
+  { label: contact.location, href: '#home', icon: MapPin },
 ];

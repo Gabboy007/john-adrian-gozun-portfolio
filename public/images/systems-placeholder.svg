@@ -1,16 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" role="img" aria-label="Systems workflow placeholder">
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#092b38"/>
-      <stop offset="1" stop-color="#071014"/>
-    </linearGradient>
-  </defs>
-  <rect width="900" height="640" fill="url(#bg)"/>
-  <rect x="132" y="150" width="210" height="130" rx="18" fill="#101f24" stroke="#2ed3ff" stroke-width="8"/>
-  <rect x="558" y="150" width="210" height="130" rx="18" fill="#101f24" stroke="#20f2a6" stroke-width="8"/>
-  <rect x="345" y="360" width="210" height="130" rx="18" fill="#101f24" stroke="#ffb75e" stroke-width="8"/>
-  <path d="M342 215h216M450 280v80" stroke="#d8f8ff" stroke-width="10" stroke-linecap="round"/>
-  <circle cx="237" cy="215" r="20" fill="#2ed3ff"/>
-  <circle cx="663" cy="215" r="20" fill="#20f2a6"/>
-  <circle cx="450" cy="425" r="20" fill="#ffb75e"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 640" role="img" aria-label="Business systems workflow illustration">
+  <rect width="900" height="640" fill="#fffaf0"/>
+  <path d="M0 128h900M0 320h900M0 512h900M180 0v640M450 0v640M720 0v640" stroke="#d34d34" stroke-opacity=".12" stroke-width="3"/>
+  <rect x="96" y="122" width="230" height="136" rx="8" fill="#171a17"/>
+  <rect x="574" y="122" width="230" height="136" rx="8" fill="#047d78"/>
+  <rect x="335" y="378" width="230" height="136" rx="8" fill="#efb33d" stroke="#24211b" stroke-width="8"/>
+  <path d="M326 190h248M450 258v120" fill="none" stroke="#24211b" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="211" cy="190" r="28" fill="#d34d34" stroke="#fffdf6" stroke-width="8"/>
+  <circle cx="689" cy="190" r="28" fill="#83ad54" stroke="#fffdf6" stroke-width="8"/>
+  <circle cx="450" cy="446" r="28" fill="#047d78" stroke="#24211b" stroke-width="8"/>
+  <path d="M142 306h154M604 306h154M384 562h132" stroke="#047d78" stroke-opacity=".45" stroke-width="9" stroke-linecap="round"/>
 </svg>
