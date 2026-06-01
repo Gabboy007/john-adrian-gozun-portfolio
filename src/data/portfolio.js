@@ -4,6 +4,7 @@ import {
   Cpu,
   DatabaseZap,
   GraduationCap,
+  Github,
   Hammer,
   MapPin,
   Microchip,
@@ -24,6 +25,7 @@ export const contact = {
   email: 'Adrian07gozun@gmail.com',
   phone: '0939 692 0721',
   location: 'Bocaue, Bulacan',
+  github: 'https://github.com/Gabboy007',
 };
 
 export const navItems = [
@@ -251,4 +253,5 @@ export const contactLinks = [
   { label: contact.email, href: `mailto:${contact.email}`, icon: Send },
   { label: contact.phone, href: 'tel:+639396920721', icon: Phone },
   { label: contact.location, href: '#home', icon: MapPin },
+  { label: 'github.com/Gabboy007', href: contact.github, icon: Github },
 ];
