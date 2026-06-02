@@ -253,5 +253,5 @@ export const contactLinks = [
   { label: contact.email, href: `mailto:${contact.email}`, icon: Send },
   { label: contact.phone, href: 'tel:+639396920721', icon: Phone },
   { label: contact.location, href: '#home', icon: MapPin },
-  { label: 'github.com/Gabboy007', href: contact.github, icon: Github },
+  { label: 'github.com/Gabboy007', href: contact.github, icon: Github, external: true },
 ];

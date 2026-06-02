@@ -396,7 +396,13 @@ function Contact() {
           {contactLinks.map((link) => {
             const Icon = link.icon;
             return (
-              <a key={link.label} href={link.href} className="contact-link">
+              <a
+                key={link.label}
+                href={link.href}
+                className="contact-link"
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noreferrer' : undefined}
+              >
                 <Icon aria-hidden="true" />
                 <span>{link.label}</span>
                 <ArrowUpRight aria-hidden="true" />
